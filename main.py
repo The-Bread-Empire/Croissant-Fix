@@ -4,6 +4,7 @@ import random
 from time import sleep
 from make_website import make_website
 from eventcommands import eventcommands
+from eventcommands import alwayscommands
 from commands import clear
 import discord.utils
 
@@ -16,7 +17,6 @@ marshallr = random.randint(1, 5)
 
 client = discord.Client()
 
-
 @client.event
 async def on_ready():
     clear()
@@ -28,10 +28,8 @@ async def on_ready():
         activity=discord.Activity(
             type=discord.ActivityType.watching, name="you"))
 
-
 fish = "fish"
 rank = "!rank"
-
 
 @client.event
 async def on_message(message):
@@ -59,7 +57,21 @@ async def on_message(message):
         await client.change_presence(
             activity=discord.Activity(
                 type=discord.ActivityType.watching, name="you"))
-
+    if not message.author.id == 764150242438283335:
+      if (message.content == "hello") or (message.content == "hi"):
+        hellorand = random.randint(1, 5)
+        if hellorand == 1:
+          await message.channel.send("howdy")
+        elif hellorand == 2:
+          await message.channel.send("lemme in ur house")
+        elif hellorand == 3:
+          await message.channel.send("don't bother me")
+        elif hellorand == 4:
+          await message.channel.send("nOOO")
+        else:
+          await message.channel.send("im out, NOPE")
+      if message.content in alwayscommands:
+        await message.channel.send(alwayscommands[message.content])
     randomspeak = random.randint(1, 3)
     if randomspeak == 1:
         if not message.author.id == 764150242438283335:
@@ -67,25 +79,6 @@ async def on_message(message):
             if message.content in eventcommands:
                 await message.channel.send(eventcommands[message.content])
                 #about 40 of the commands come from th 2 lines of code above this comment
-
-            if fish in message.content:
-                if message.content == "fishy sticks":
-                    print("spam prevented")
-                else:
-                    await message.channel.send("fishy sticks")
-
-            if (message.content == "hello") or (message.content == "hi"):
-                hellorand = random.randint(1, 5)
-                if hellorand == 1:
-                    await message.channel.send("howdy")
-                elif hellorand == 2:
-                    await message.channel.send("lemme in ur house")
-                elif hellorand == 3:
-                    await message.channel.send("don't bother me")
-                elif hellorand == 4:
-                    await message.channel.send("nOOO")
-                else:
-                    await message.channel.send("im out, NOPE")
 
             randomspeak = random.randint(1, 2)
     if rank in message.content:
@@ -123,29 +116,12 @@ async def on_message(message):
             marshallr = random.randint(1, 5)
 
     if message.content == "Croissant eat the chat":
+      if message.author.id == 547942699572002836:
         while True:
 
             await message.channel.send(
                 "** ** \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ** **"
             )
-
-    if message.author.id == 547942699572002836:
-        if message.author.guild.id == 691024705905229945:
-            print("suppression disabled")
-        else:
-            #message.delete()
-            #await message.channel.send("Your mean")
-            print(
-                f"{message.author} said: {message.content} (message suppresed in {message.channel.name} channel in the {message.guild.name} server)"
-            )
-    if message.author.id == 234395307759108106:
-        await message.channel.send(
-            f"Shut up {message.author.name} or I will yeet a snake at you")
-
-    #if message.author.id == 562847060857192469:
-    #await message.delete()
-    #await message.channel.send("Your mean")
-    #print(f"{message.author} said: {message.content} (message suppresed in {message.channel.name} channel in the {message.guild.name} server)")
 
     if message.author.id == 515704039686668310:
         randannoy = random.randint(1, 9)
